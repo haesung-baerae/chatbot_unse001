@@ -87,8 +87,6 @@ if st.button("✨ 오늘의 운세 보기"):
             <div id="capture-area" style="
                 background-color: #fff8f0 !important;
                 padding: 20px;
-                border-radius: 15px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 font-size: 16px;
                 line-height: 1.8;
                 color: #5a3e36;
