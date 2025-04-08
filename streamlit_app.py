@@ -99,17 +99,43 @@ if st.button("✨ 오늘의 운세 보기"):
               <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;" />
               {''.join(f"<p>👉 {line.strip()}</p>" for line in sentences if line.strip())}
             
-              <div style="text-align:center; margin-top: 25px;">
+              <div style="display: flex; justify-content: center; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
                 <button onclick="downloadImage()" style="
-                    padding: 10px 20px;
-                    font-size: 16px;
+                    padding: 10px 15px;
+                    font-size: 14px;
                     background-color: #6c5ce7;
                     color: white;
                     border: none;
                     border-radius: 8px;
                     cursor: pointer;
                 ">📸 이미지로 저장</button>
+              
+                <a href="{glitch_url}" target="_blank" style="text-decoration: none;">
+                  <button style="
+                      padding: 10px 15px;
+                      font-size: 14px;
+                      background-color: #FEE500;
+                      color: #3C1E1E;
+                      border: none;
+                      border-radius: 8px;
+                      cursor: pointer;
+                      font-weight: bold;
+                  ">💬 나의 운세 공유</button>
+                </a>
+              
+                <a href="https://chatbot-unse001.streamlit.app" target="_blank" style="text-decoration: none;">
+                  <button style="
+                      padding: 10px 15px;
+                      font-size: 14px;
+                      background-color: #00C473;
+                      color: white;
+                      border: none;
+                      border-radius: 8px;
+                      cursor: pointer;
+                  ">💌 운세 페이지 공유</button>
+                </a>
               </div>
+
             </div>
             
             <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
