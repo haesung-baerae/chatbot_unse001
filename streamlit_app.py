@@ -79,7 +79,20 @@ if st.button("✨ 오늘의 운세 보기"):
        
             # 👉 HTML에 Python 변수를 삽입
             content_html = f"""
-            <div id="capture-area" style="background-color: #fff8f0; padding: 20px 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 18px; line-height: 1.8; color: #5a3e36; width: 600px; margin: auto;">
+            <div id="capture-area" style="
+              background-color: #fff8f0;
+              padding: 20px 30px;
+              border-radius: 15px;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+              font-size: 18px;
+              line-height: 1.8;
+              color: #5a3e36;
+              width: 100%;
+              max-width: 600px;
+              margin: auto;
+              box-sizing: border-box;
+          ">
+
             <h2>🔮 오늘의 운세</h2>
             <p>📅 <strong>{today}</strong></p>
             <p>💡 <em>{advice}</em></p>
