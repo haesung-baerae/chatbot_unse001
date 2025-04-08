@@ -78,8 +78,8 @@ if st.button("✨ 오늘의 운세 보기"):
             advice = random.choice(advice_list)
        
             # 👉 HTML에 Python 변수를 삽입
-           content_html = f"""
-            <div id="capture-area" style="
+             content_html = f"""
+             <div id="capture-area" style="
                 background-color: #fff8f0;
                 padding: 20px;
                 border-radius: 15px;
