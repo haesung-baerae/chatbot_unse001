@@ -12,19 +12,20 @@ kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
 
 st.markdown("""
-<a href="https://www.example.com" target="_blank">
+<a href="https://mature-cream-ear.glitch.me" target="_blank">
   <button style="
       padding: 10px 20px;
-      background-color: lightgreen;
+      font-size: 16px;
+      background-color: #FEE500;
+      color: #3C1E1E;
       border: none;
       border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;">
-    ✅ 새 창 열기 테스트
+      cursor: pointer;
+      font-weight: bold;">
+    💬 카카오톡으로 공유하기
   </button>
 </a>
 """, unsafe_allow_html=True)
-
 
 
 st.title("🔮 AI 오늘의 운세")
