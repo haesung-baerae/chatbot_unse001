@@ -111,6 +111,8 @@ if st.button("✨ 오늘의 운세 보기"):
                 ">📸 이미지로 저장</button>
                 # Glitch 공유 링크에 메시지 실어보내기
                 glitch_url = f"https://mature-cream-ear.glitch.me/?message={encoded_result}"
+                # URL 인코딩 처리
+                encoded_result = urllib.parse.quote(result)
                    
                 <a href="{glitch_url}" target="_blank" style="text-decoration: none;">
                   <button style="
@@ -165,8 +167,6 @@ if st.button("✨ 오늘의 운세 보기"):
             # Streamlit에 출력
             html(content_html, height=700)
             
-            # URL 인코딩 처리
-            encoded_result = urllib.parse.quote(result)
             
            
             # 공유 버튼 출력
