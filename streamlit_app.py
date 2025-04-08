@@ -4,7 +4,8 @@ from datetime import date
 import re
 import random
 from streamlit.components.v1 import html
-
+import urllib.parse
+import textwrap
 # OpenAI API 키 설정 (안전하게 보관할 땐 환경변수 사용 권장)
 openai_api_key = st.secrets['openai']['API_KEY']
 client = openai.OpenAI(api_key  = openai_api_key)
@@ -75,27 +76,7 @@ if st.button("✨ 오늘의 운세 보기"):
                 "🍀 오늘 당신은 이미 충분히 잘하고 있어요."
             ]
             advice = random.choice(advice_list)
-            #st.markdown(f"💡 **오늘의 한 줄 조언:** _{advice}_")
-            # st.markdown(
-            #     f"""
-            #     <div style="
-            #         background-color: #fffbea;
-            #         padding: 20px;
-            #         border-radius: 12px;
-            #         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            #         font-size: 18px;
-            #         line-height: 1.7;
-            #         color: #5b3c00;
-            #         ">
-            #         <p>📅 <strong>오늘 날짜:</strong> {today}</p>
-            #         <p>💡 <strong>오늘의 한 줄 조언:</strong> <em>{advice}</em></p>
-            #         <hr style="border: none; border-top: 1px solid #ddd;" />
-            #         <p style="margin-top: 15px;"><strong>🔮 오늘의 운세</strong></p>
-            #         {"".join([f"<p>👉 {line.strip()}.</p>" for line in sentences if line.strip()])}
-            #     </div>
-            #     """,
-            #     unsafe_allow_html=True
-            # )          
+       
             # 👉 HTML에 Python 변수를 삽입
             content_html = f"""
             <div id="capture-area" style="background-color: #fff8f0; padding: 20px 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 18px; line-height: 1.8; color: #5a3e36; width: 600px; margin: auto;">
@@ -123,9 +104,24 @@ if st.button("✨ 오늘의 운세 보기"):
             }}
             </script>
             """
-
             # Streamlit에 출력
             html(content_html, height=600)
 
+            # URL 인코딩 처리
+            encoded_result = urllib.parse.quote(result)
+            
+            # Glitch 공유 링크에 메시지 실어보내기
+            glitch_url = f"https://mature-cream-ear.glitch.me/?message={encoded_result}"
+            
+            st.markdown(
+                f'<a href="{glitch_url}" target="_blank">'
+                '<button style="padding:10px 20px; font-size:16px; background-color:#FEE500; '
+                'color:#3C1E1E; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">'
+                '💬 나의 운세 공유하기</button></a>',
+                unsafe_allow_html=True
+            )
+          
+            # HTML 렌더링
+            st.markdown(textwrap.dedent(share_button_html), unsafe_allow_html=True)
         except Exception as e:
             st.error(f"에러 발생: {e}")
