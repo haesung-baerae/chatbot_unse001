@@ -10,40 +10,13 @@ openai_api_key = st.secrets['openai']['API_KEY']
 client = openai.OpenAI(api_key  = openai_api_key)
 kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
+from streamlit.components.v1 import html
+
 html("""
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script>
-  if (!window.Kakao.isInitialized) {
-    Kakao.init("e81bbaa2211fcf6024940d3cac85cc5b");
-  }
-
-  function sendToKakao() {
-    Kakao.Link.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '🔮 오늘의 운세',
-        description: '✨ 오늘은 별들이 당신을 응원합니다!',
-        imageUrl: 'https://ifh.cc/g/CXhL3F.jpg',
-        link: {
-          mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
-          webUrl: 'https://chatbot-unse001.streamlit.app'
-        }
-      },
-      buttons: [
-        {
-          title: '운세 보러가기',
-          link: {
-            mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
-            webUrl: 'https://chatbot-unse001.streamlit.app'
-          }
-        }
-      ]
-    });
-  }
-</script>
 
 <div style="text-align:center; margin-top: 20px;">
-  <button onclick="sendToKakao()" style="
+  <button id="kakao-share-button" style="
       padding: 10px 20px;
       font-size: 16px;
       background-color: #FEE500;
@@ -54,7 +27,40 @@ html("""
       font-weight: bold;
   ">💬 카카오톡으로 공유</button>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (!window.Kakao.isInitialized) {
+      Kakao.init("e81bbaa2211fcf6024940d3cac85cc5b");
+    }
+
+    document.getElementById("kakao-share-button").addEventListener("click", function() {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '🔮 오늘의 운세',
+          description: '✨ 오늘은 별들이 당신을 응원합니다!',
+          imageUrl: 'https://ifh.cc/g/CXhL3F.jpg',
+          link: {
+            mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
+            webUrl: 'https://chatbot-unse001.streamlit.app'
+          }
+        },
+        buttons: [
+          {
+            title: '운세 보러가기',
+            link: {
+              mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
+              webUrl: 'https://chatbot-unse001.streamlit.app'
+            }
+          }
+        ]
+      });
+    });
+  });
+</script>
 """, height=250)
+
 
 st.title("🔮 AI 오늘의 운세")
 st.write("당신의 생년월일을 입력하면 AI가 오늘의 운세를 짧게!! 알려드립니다!")
