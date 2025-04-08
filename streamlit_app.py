@@ -102,7 +102,7 @@ if st.button("✨ 오늘의 운세 보기"):
               <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;" />
               {''.join(f"<p>👉 {line.strip()}</p>" for line in sentences if line.strip())}
             
-              <div style="display: flex; justify-content: center; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
+              <div class="no-capture" style="display: flex; justify-content: center; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
                 <button onclick="downloadImage()" style="
                     padding: 10px 15px;
                     font-size: 14px;
@@ -144,7 +144,9 @@ if st.button("✨ 오늘의 운세 보기"):
             <script>
             function downloadImage() {{
                 const captureArea = document.getElementById("capture-area");
-            
+              // 👉 버튼 숨기기
+                document.querySelectorAll('.no-capture').forEach(el => el.style.display = "none");
+
                 // 👇 캡처 전에 배경 강제로 설정 (1차 보정)
                 captureArea.style.backgroundColor = "#fff8f0";
             
@@ -156,6 +158,8 @@ if st.button("✨ 오늘의 운세 보기"):
                     link.download = "오늘의_운세.png";
                     link.href = canvas.toDataURL("image/png");
                     link.click();
+                    // 👉 버튼 다시 보이게!
+                    document.querySelectorAll('.no-capture').forEach(el => el.style.display = "flex");
                 }});
             }}
             </script>
