@@ -169,14 +169,14 @@ if st.button("✨ 오늘의 운세 보기"):
             
             
            
-            # 공유 버튼 출력
-            st.markdown(
-                f'<a href="{glitch_url}" target="_blank">'
-                '<button style="padding:10px 20px; font-size:16px; background-color:#FEE500; '
-                'color:#3C1E1E; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">'
-                '💬 나의 운세 공유하기</button></a>',
-                unsafe_allow_html=True
-            )
+            # # 공유 버튼 출력
+            # st.markdown(
+            #     f'<a href="{glitch_url}" target="_blank">'
+            #     '<button style="padding:10px 20px; font-size:16px; background-color:#FEE500; '
+            #     'color:#3C1E1E; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">'
+            #     '💬 나의 운세 공유하기</button></a>',
+            #     unsafe_allow_html=True
+            # )
 
           
             
