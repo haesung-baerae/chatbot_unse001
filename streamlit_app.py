@@ -10,6 +10,7 @@ openai_api_key = st.secrets['openai']['API_KEY']
 client = openai.OpenAI(api_key  = openai_api_key)
 kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
+from streamlit.components.v1 import html
 
 html("""
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -28,7 +29,6 @@ html("""
 </div>
 
 <script>
-  // SDK 로딩이 완료된 뒤 실행되도록 setTimeout으로 딜레이 처리
   setTimeout(function() {
     if (typeof Kakao !== 'undefined') {
       if (!Kakao.isInitialized()) {
@@ -62,9 +62,10 @@ html("""
     } else {
       console.error("Kakao SDK not loaded properly.");
     }
-  }, 1000);  // 1초 후 실행
+  }, 1000);
 </script>
 """, height=250)
+
 
 
 
