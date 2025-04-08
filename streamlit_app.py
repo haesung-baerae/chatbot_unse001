@@ -12,21 +12,21 @@ client = openai.OpenAI(api_key  = openai_api_key)
 kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
 
-st.markdown("""
-<a href="https://mature-cream-ear.glitch.me" target="_blank">
-  <button style="
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #FEE500;
-      color: #3C1E1E;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;">
-    💬 카카오톡으로 공유하기
-  </button>
-</a>
-""", unsafe_allow_html=True)
+# st.markdown("""
+# <a href="https://mature-cream-ear.glitch.me" target="_blank">
+#   <button style="
+#       padding: 10px 20px;
+#       font-size: 16px;
+#       background-color: #FEE500;
+#       color: #3C1E1E;
+#       border: none;
+#       border-radius: 8px;
+#       cursor: pointer;
+#       font-weight: bold;">
+#     💬 카카오톡으로 공유하기
+#   </button>
+# </a>
+# """, unsafe_allow_html=True)
 
 
 st.title("🔮 AI 오늘의 운세")
@@ -127,8 +127,7 @@ if st.button("✨ 오늘의 운세 보기"):
                       font-weight: bold;
                   ">💬 나의 운세 공유</button>
                 </a>
-              
-                <a href="https://chatbot-unse001.streamlit.app" target="_blank" style="text-decoration: none;">
+                <a href="https://mature-cream-ear.glitch.me" target="_blank" style="text-decoration: none;">                
                   <button style="
                       padding: 10px 15px;
                       font-size: 14px;
