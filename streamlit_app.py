@@ -12,11 +12,17 @@ kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
 
 st.markdown("""
-<button onclick="alert('버튼 눌림!');"
-        style="padding: 10px 20px; font-size: 16px; background-color: #FEE500; color: #3C1E1E;
-               border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-✅ 버튼 눌리나 테스트
-</button>
+<a href="https://www.example.com" target="_blank">
+  <button style="
+      padding: 10px 20px;
+      background-color: lightgreen;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;">
+    ✅ 새 창 열기 테스트
+  </button>
+</a>
 """, unsafe_allow_html=True)
 
 
