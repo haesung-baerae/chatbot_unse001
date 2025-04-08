@@ -114,15 +114,18 @@ if st.button("✨ 오늘의 운세 보기"):
             
             <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
             <script>
-            function downloadImage() {{
+            function downloadImage() {
                 const captureArea = document.getElementById("capture-area");
-                html2canvas(captureArea).then(canvas => {{
+                html2canvas(captureArea, {
+                    backgroundColor: null,
+                    useCORS: true
+                }).then(canvas => {
                     const link = document.createElement("a");
                     link.download = "오늘의_운세.png";
-                    link.href = canvas.toDataURL();
+                    link.href = canvas.toDataURL("image/png");
                     link.click();
-                }});
-            }}
+                });
+            }
             </script>
             """
             
