@@ -76,7 +76,12 @@ if st.button("✨ 오늘의 운세 보기"):
                 "🍀 오늘 당신은 이미 충분히 잘하고 있어요."
             ]
             advice = random.choice(advice_list)
-       
+            # URL 인코딩 처리
+            encoded_result = urllib.parse.quote(result)
+            # Glitch 공유 링크에 메시지 실어보내기
+            glitch_url = f"https://mature-cream-ear.glitch.me/?message={encoded_result}"
+
+              
             # 👉 HTML에 Python 변수를 삽입
             content_html = f"""
             <div id="capture-area" style="
@@ -109,12 +114,7 @@ if st.button("✨ 오늘의 운세 보기"):
                     border-radius: 8px;
                     cursor: pointer;
                 ">📸 이미지로 저장</button>
-                # URL 인코딩 처리
-                encoded_result = urllib.parse.quote(result)
-                # Glitch 공유 링크에 메시지 실어보내기
-                glitch_url = f"https://mature-cream-ear.glitch.me/?message={encoded_result}"
-
-                   
+        
                 <a href="{glitch_url}" target="_blank" style="text-decoration: none;">
                   <button style="
                       padding: 10px 15px;
