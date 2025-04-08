@@ -117,6 +117,7 @@ if st.button("✨ 오늘의 운세 보기"):
             function downloadImage() {{
                 const captureArea = document.getElementById("capture-area");
                 html2canvas(captureArea, {{
+                    backgroundColor: "#fff8f0",
                     backgroundColor: null,
                     useCORS: true
                 }}).then(canvas => {{
@@ -130,7 +131,7 @@ if st.button("✨ 오늘의 운세 보기"):
             """
             
             # Streamlit에 출력
-            html(content_html, height=600)
+            html(content_html, height=700)
             
             # URL 인코딩 처리
             encoded_result = urllib.parse.quote(result)
