@@ -78,53 +78,53 @@ if st.button("✨ 오늘의 운세 보기"):
             advice = random.choice(advice_list)
        
             # 👉 HTML에 Python 변수를 삽입
-             content_html = f"""
-             <div id="capture-area" style="
-                background-color: #fff8f0;
-                padding: 20px;
-                border-radius: 15px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                font-size: 16px;
-                line-height: 1.8;
-                color: #5a3e36;
-                max-width: 600px;
-                width: 100%;
-                margin: 0 auto;
-                box-sizing: border-box;
-                text-align: left;
-            ">
-              <h2 style="margin-top: 0;">🔮 오늘의 운세</h2>
-              <p>📅 <strong>{today}</strong></p>
-              <p>💡 <em>{advice}</em></p>
-              <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;" />
-              {''.join(f"<p>👉 {line.strip()}</p>" for line in sentences if line.strip())}
-            
-              <div style="text-align:center; margin-top: 25px;">
-                <button onclick="downloadImage()" style="
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    background-color: #6c5ce7;
-                    color: white;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                ">📸 이미지로 저장</button>
-              </div>
+           content_html = f"""
+           <div id="capture-area" style="
+              background-color: #fff8f0;
+              padding: 20px;
+              border-radius: 15px;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+              font-size: 16px;
+              line-height: 1.8;
+              color: #5a3e36;
+              max-width: 600px;
+              width: 100%;
+              margin: 0 auto;
+              box-sizing: border-box;
+              text-align: left;
+          ">
+            <h2 style="margin-top: 0;">🔮 오늘의 운세</h2>
+            <p>📅 <strong>{today}</strong></p>
+            <p>💡 <em>{advice}</em></p>
+            <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;" />
+            {''.join(f"<p>👉 {line.strip()}</p>" for line in sentences if line.strip())}
+          
+            <div style="text-align:center; margin-top: 25px;">
+              <button onclick="downloadImage()" style="
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  background-color: #6c5ce7;
+                  color: white;
+                  border: none;
+                  border-radius: 8px;
+                  cursor: pointer;
+              ">📸 이미지로 저장</button>
             </div>
-            
-            <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-            <script>
-            function downloadImage() {{
-                const captureArea = document.getElementById("capture-area");
-                html2canvas(captureArea).then(canvas => {{
-                    const link = document.createElement("a");
-                    link.download = "오늘의_운세.png";
-                    link.href = canvas.toDataURL();
-                    link.click();
-                }});
-            }}
-            </script>
-            """
+          </div>
+          
+          <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+          <script>
+          function downloadImage() {{
+              const captureArea = document.getElementById("capture-area");
+              html2canvas(captureArea).then(canvas => {{
+                  const link = document.createElement("a");
+                  link.download = "오늘의_운세.png";
+                  link.href = canvas.toDataURL();
+                  link.click();
+              }});
+          }}
+          </script>
+          """
 
             # Streamlit에 출력
             html(content_html, height=600)
