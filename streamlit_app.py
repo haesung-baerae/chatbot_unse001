@@ -10,7 +10,6 @@ openai_api_key = st.secrets['openai']['API_KEY']
 client = openai.OpenAI(api_key  = openai_api_key)
 kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
-from streamlit.components.v1 import html
 
 html("""
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -29,37 +28,44 @@ html("""
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    if (!window.Kakao.isInitialized) {
-      Kakao.init("e81bbaa2211fcf6024940d3cac85cc5b");
-    }
+  // SDK 로딩이 완료된 뒤 실행되도록 setTimeout으로 딜레이 처리
+  setTimeout(function() {
+    if (typeof Kakao !== 'undefined') {
+      if (!Kakao.isInitialized()) {
+        Kakao.init("e81bbaa2211fcf6024940d3cac85cc5b");
+      }
 
-    document.getElementById("kakao-share-button").addEventListener("click", function() {
-      Kakao.Link.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: '🔮 오늘의 운세',
-          description: '✨ 오늘은 별들이 당신을 응원합니다!',
-          imageUrl: 'https://ifh.cc/g/CXhL3F.jpg',
-          link: {
-            mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
-            webUrl: 'https://chatbot-unse001.streamlit.app'
-          }
-        },
-        buttons: [
-          {
-            title: '운세 보러가기',
+      const btn = document.getElementById("kakao-share-button");
+      btn.addEventListener("click", function() {
+        Kakao.Link.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '🔮 오늘의 운세',
+            description: '✨ 오늘은 별들이 당신을 응원합니다!',
+            imageUrl: 'https://ifh.cc/g/CXhL3F.jpg',
             link: {
               mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
               webUrl: 'https://chatbot-unse001.streamlit.app'
             }
-          }
-        ]
+          },
+          buttons: [
+            {
+              title: '운세 보러가기',
+              link: {
+                mobileWebUrl: 'https://chatbot-unse001.streamlit.app',
+                webUrl: 'https://chatbot-unse001.streamlit.app'
+              }
+            }
+          ]
+        });
       });
-    });
-  });
+    } else {
+      console.error("Kakao SDK not loaded properly.");
+    }
+  }, 1000);  // 1초 후 실행
 </script>
 """, height=250)
+
 
 
 st.title("🔮 AI 오늘의 운세")
