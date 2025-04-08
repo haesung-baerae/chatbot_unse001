@@ -116,9 +116,12 @@ if st.button("✨ 오늘의 운세 보기"):
             <script>
             function downloadImage() {{
                 const captureArea = document.getElementById("capture-area");
+            
+                // 👇 캡처 전에 배경 강제로 설정 (1차 보정)
+                captureArea.style.backgroundColor = "#fff8f0";
+            
                 html2canvas(captureArea, {{
-                    backgroundColor: "#fff8f0",
-                    backgroundColor: null,
+                    backgroundColor: "#fff8f0",  // ✅ 2차 보정
                     useCORS: true
                 }}).then(canvas => {{
                     const link = document.createElement("a");
@@ -128,6 +131,7 @@ if st.button("✨ 오늘의 운세 보기"):
                 }});
             }}
             </script>
+
             """
             
             # Streamlit에 출력
