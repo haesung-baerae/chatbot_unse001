@@ -121,7 +121,6 @@ if st.button("✨ 오늘의 운세 보기"):
                 unsafe_allow_html=True
             )
           
-            # HTML 렌더링
-            st.markdown(textwrap.dedent(share_button_html), unsafe_allow_html=True)
+            
         except Exception as e:
             st.error(f"에러 발생: {e}")
