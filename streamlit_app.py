@@ -11,7 +11,7 @@ client = openai.OpenAI(api_key  = openai_api_key)
 kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
 
 st.markdown("""
-<button onclick="window.open('https://lucky-kakao-share.glitch.me', '_blank')"
+<button onclick="window.open('https://mature-cream-ear.glitch.me', '_blank')"
         style="padding: 10px 20px; font-size: 16px; background-color: #FEE500; color: #3C1E1E;
                border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
 💬 카카오톡으로 공유하기
