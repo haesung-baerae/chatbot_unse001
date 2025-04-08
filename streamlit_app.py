@@ -14,7 +14,7 @@ html(f"""
 <!-- Kakao SDK -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
-  Kakao.init('{kakao_app_key}');
+  Kakao.init(f'{kakao_app_key}');
 </script>
 <div style="text-align:center; margin-top: 20px;">
   <button onclick="sendToKakao()" style="
