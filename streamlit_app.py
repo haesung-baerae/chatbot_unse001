@@ -6,9 +6,54 @@ import random
 from streamlit.components.v1 import html
 
 # OpenAI API 키 설정 (안전하게 보관할 땐 환경변수 사용 권장)
-
 openai_api_key = st.secrets['openai']['API_KEY']
 client = openai.OpenAI(api_key  = openai_api_key)
+kakao_app_key = "e81bbaa2211fcf6024940d3cac85cc5b"
+
+html(f"""
+<!-- Kakao SDK -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+  Kakao.init('{kakao_app_key}');
+</script>
+<div style="text-align:center; margin-top: 20px;">
+  <button onclick="sendToKakao()" style="
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #FEE500;
+      color: #3C1E1E;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+  ">💬 카카오톡으로 공유</button>
+</div>
+<script>
+  function sendToKakao() {{
+    Kakao.Link.sendDefault({{
+      objectType: 'feed',
+      content: {{
+        title: '🔮 오늘의 운세',
+        description: '✨ 오늘의 한 줄 조언과 운세 메시지를 확인해보세요!',
+        imageUrl: 'https://ifh.cc/g/CXhL3F.jpg',  // 대표 이미지
+        link: {{
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href
+        }}
+      }},
+      buttons: [
+        {{
+          title: '운세 보러가기',
+          link: {{
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href
+          }}
+        }}
+      ]
+    }});
+  }}
+</script>
+""", height=150)
 
 st.title("🔮 AI 오늘의 운세")
 st.write("당신의 생년월일을 입력하면 AI가 오늘의 운세를 짧게!! 알려드립니다!")
